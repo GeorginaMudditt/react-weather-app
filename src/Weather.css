@@ -69,6 +69,16 @@
   font-size: 60px;
 }
 
+.loading {
+  background-color: #8594e4;
+  border-radius: 20px;
+  font-family: "Oswald", sans-serif;
+  font-size: 50px;
+  height: 150px;
+  width: 300px;
+  margin: 50px auto;
+}
+
 @media (max-width: 768px) {
   .Weather {
     margin: 0 auto 50px auto;

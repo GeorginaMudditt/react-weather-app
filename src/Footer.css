@@ -1,6 +1,8 @@
 .Footer {
   background-color: #d5def5;
+  border-radius: 10px;
   padding: 10px;
+  width: 100%;
 }
 
 .Footer p {
