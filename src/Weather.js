@@ -6,8 +6,12 @@ export default function Weather() {
   return (
     <div className="Weather">
       <form>
-        <input type="search" placeholder="Enter a city" />
-        <input type="submit" value="Search" />
+        <input
+          className="enter-city"
+          type="search"
+          placeholder="Enter a city"
+        />
+        <input className="search-button" type="submit" value="Search" />
       </form>
       <h3>Showing the current conditions in:</h3>
       <h2>London</h2>
@@ -20,10 +24,10 @@ export default function Weather() {
           </ul>
         </div>
         <div className="col-3">
-          <div>☁️</div>
+          <div className="current-weather-icon">☁️</div>
         </div>
         <div className="col-3">
-          <div>11°C</div>
+          <h2 className="current-temperature">11°C</h2>
         </div>
       </div>
     </div>

@@ -10,8 +10,8 @@ export default function App() {
       <div className="container">
         <Header />
         <Weather />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

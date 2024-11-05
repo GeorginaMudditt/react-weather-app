@@ -1,0 +1,41 @@
+.Header {
+  background-color: #d5def5;
+  border-radius: 20px;
+  margin: 50px auto;
+  max-width: 60%;
+  padding: 30px;
+}
+
+.Header h1,
+h2 {
+  color: #430f58;
+  font-family: "Oswald", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.Header h3 {
+  color: #430f58;
+  font-family: "Lora", serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.Header h1 {
+  font-size: 55px;
+}
+
+.Header h2 {
+  font-size: 35px;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .Header {
+    margin: 30px auto;
+    max-width: 100%;
+    padding: 20px;
+  }
+}

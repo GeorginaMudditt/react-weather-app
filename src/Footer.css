@@ -1,0 +1,14 @@
+.Footer {
+  background-color: #d5def5;
+  padding: 10px;
+}
+
+.Footer p {
+  color: #430f58;
+  font-family: "Lora", serif;
+  margin: 0;
+}
+
+.Footer a {
+  color: #6643b5;
+}
