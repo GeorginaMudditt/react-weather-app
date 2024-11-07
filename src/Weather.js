@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import WeatherIcon from "./WeatherIcon";
+import Temperature from "./Temperature";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -57,17 +58,13 @@ export default function Weather(props) {
               <li>Wind speed: {Math.round(weatherData.wind)} km/h</li>
             </ul>
           </div>
-          <div className="col-3 current-weather-icon">
+          <div className="col-2 current-weather-icon">
             <WeatherIcon
               summary={weatherData.summary}
               alt={weatherData.summary}
             />
           </div>
-          <div className="col-3">
-            <h2 className="current-temperature">
-              {Math.round(weatherData.temperature)}°C
-            </h2>
-          </div>
+          <Temperature celsius={weatherData.temperature} />
         </div>
       </div>
     );
