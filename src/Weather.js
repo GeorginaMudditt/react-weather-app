@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import WeatherIcon from "./WeatherIcon";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -56,8 +57,11 @@ export default function Weather(props) {
               <li>Wind speed: {Math.round(weatherData.wind)} km/h</li>
             </ul>
           </div>
-          <div className="col-3">
-            <div className="current-weather-icon">☁️</div>
+          <div className="col-3 current-weather-icon">
+            <WeatherIcon
+              summary={weatherData.summary}
+              alt={weatherData.summary}
+            />
           </div>
           <div className="col-3">
             <h2 className="current-temperature">

@@ -1,9 +1,9 @@
 .Header {
-  background-color: #d5def5;
+  background-color: #8594e4;
   border-radius: 20px;
   margin: 50px auto;
   max-width: 60%;
-  padding: 30px;
+  padding: 10px;
 }
 
 .Header h1,
@@ -15,20 +15,12 @@ h2 {
   letter-spacing: 2px;
 }
 
-.Header h3 {
-  color: #430f58;
-  font-family: "Lora", serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-}
-
 .Header h1 {
-  font-size: 55px;
+  font-size: 50px;
 }
 
 .Header h2 {
-  font-size: 35px;
+  font-size: 30px;
   margin: 20px 0;
 }
 
