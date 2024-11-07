@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WeatherIcon from "./WeatherIcon";
 import "./Forecast.css";
 import axios from "axios";
@@ -6,6 +6,10 @@ import axios from "axios";
 export default function Forecast(props) {
   const [ready, setReady] = useState(false);
   const [forecastData, setForecastData] = useState({});
+
+  useEffect(() => {
+    search();
+  }, [props.city]);
 
   function handleResponse(response) {
     setForecastData({
