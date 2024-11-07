@@ -1,0 +1,22 @@
+.Forecast {
+  background-color: #d5def5;
+  border-radius: 20px;
+  color: #430f58;
+  display: flex;
+  font-family: "Lora", serif;
+  font-size: 16px;
+  justify-content: space-around;
+  margin: 0 auto 50px auto;
+  max-width: 60%;
+  padding: 30px;
+}
+
+@media (max-width: 1200px) {
+  .Forecast {
+    flex-direction: column;
+  }
+
+  .Forecast h4 {
+    margin-top: 30px;
+  }
+}

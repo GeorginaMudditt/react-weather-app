@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./Header.js";
 import Weather from "./Weather.js";
 import Footer from "./Footer.js";
+import Forecast from "./Forecast.js";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Header />
         <Weather defaultCity="Paris" />
       </div>
+      <Forecast />
       <Footer />
     </div>
   );
