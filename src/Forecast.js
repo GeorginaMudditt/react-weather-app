@@ -8,22 +8,22 @@ export default function Forecast(props) {
   const [forecastData, setForecastData] = useState({});
 
   useEffect(() => {
+    function search() {
+      let apiKey = "21f1caaedf3t0e238fc991db4d2f34bo";
+      let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.city}&key=${apiKey}&units=metric`;
+      axios.get(apiUrl).then(handleResponse);
+    }
+
+    function handleResponse(response) {
+      setForecastData({
+        minTemp: response.data.daily.temperature.minimum,
+        maxTemp: response.data.daily.temperature.maximum,
+      });
+      setReady(true);
+    }
+
     search();
   }, [props.city]);
-
-  function handleResponse(response) {
-    setForecastData({
-      minTemp: response.data.daily[1].temperature.minimum,
-      maxTemp: response.data.daily[1].temperature.maximum,
-    });
-    setReady(true);
-  }
-
-  function search() {
-    let apiKey = "21f1caaedf3t0e238fc991db4d2f34bo";
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.city}&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
 
   if (!ready) {
     return "Loading forecast ...";
