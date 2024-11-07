@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherIcon from "./WeatherIcon";
 import Temperature from "./Temperature";
@@ -10,7 +10,6 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
       city: response.data.city,
       summary: response.data.condition.description,
@@ -62,6 +61,7 @@ export default function Weather(props) {
             <WeatherIcon
               summary={weatherData.summary}
               alt={weatherData.summary}
+              size={80}
             />
           </div>
           <Temperature celsius={weatherData.temperature} />

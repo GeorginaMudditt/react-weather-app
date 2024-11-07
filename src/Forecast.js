@@ -1,39 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import WeatherIcon from "./WeatherIcon";
 import "./Forecast.css";
+import axios from "axios";
 
 export default function Forecast(props) {
+  const [ready, setReady] = useState(false);
+  const [forecastData, setForecastData] = useState({});
+
+  function handleResponse(response) {
+    setForecastData({
+      city: response.data.city,
+      minTemp: response.data.daily.temperature.minimum,
+      maxTemp: response.data.daily.temperature.maximum,
+    });
+    setReady(true);
+  }
+
+  function search() {
+    let apiKey = "21f1caaedf3t0e238fc991db4d2f34bo";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  if (ready) {
+  }
   return (
     <div className="Forecast">
       <div className="forecast-day">
         <h4>Thursday</h4>
-        <WeatherIcon summary={"clear sky"} />
-        <div>min: 10°C</div>
-        <div>max: 13°C</div>
-      </div>
-      <div className="forecast-day">
-        <h4>Friday</h4>
-        <WeatherIcon summary={"rain"} />
-        <div>min: 8°C</div>
-        <div>max: 12°C</div>
-      </div>
-      <div className="forecast-day">
-        <h4>Saturday</h4>
-        <WeatherIcon summary={"mist"} />
-        <div>min: 10°C</div>
-        <div>max: 13°C</div>
-      </div>
-      <div className="forecast-day">
-        <h4>Sunday</h4>
-        <WeatherIcon summary={"thunderstorm"} />
-        <div>min: 10°C</div>
-        <div>max: 13°C</div>
-      </div>
-      <div className="forecast-day">
-        <h4>Monday</h4>
-        <WeatherIcon summary={"broken clouds"} />
-        <div>min: 10°C</div>
-        <div>max: 13°C</div>
+        <WeatherIcon summary={"clear sky"} size={50} />
+        <div>min: {forecastData.minTemp}°C</div>
+        <div>max: {forecastData.maxTemp}°C</div>
       </div>
     </div>
   );
