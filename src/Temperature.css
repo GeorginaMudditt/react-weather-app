@@ -1,3 +1,7 @@
+.Temperature {
+  width: 180px;
+}
+
 .Temperature .celsius-fahrenheit {
   font-size: 25px;
   margin-left: 10px;

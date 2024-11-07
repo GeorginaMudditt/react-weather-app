@@ -50,15 +50,15 @@ export default function Weather(props) {
         </form>
         <h3>Showing the weather conditions for:</h3>
         <h2>{weatherData.city}</h2>
-        <div className="current-weather-container row">
-          <div className="col-6">
+        <div className="current-weather-container">
+          <div>
             <ul>
               <li>Summary: {weatherData.summary}</li>
               <li>Humidity: {weatherData.humidity}%</li>
               <li>Wind speed: {Math.round(weatherData.wind)} km/h</li>
             </ul>
           </div>
-          <div className="col-2 current-weather-icon">
+          <div className="current-weather-icon">
             <WeatherIcon
               summary={weatherData.summary}
               alt={weatherData.summary}

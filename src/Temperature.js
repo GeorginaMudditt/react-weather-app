@@ -31,7 +31,7 @@ export default function Temperature(props) {
   } else {
     let fahrenheit = (props.celsius * 9) / 5 + 32;
     return (
-      <div className="col-4 Temperature">
+      <div className="Temperature">
         <h2 className="current-temperature">
           {Math.round(fahrenheit)}
           <span className="celsius-fahrenheit">
