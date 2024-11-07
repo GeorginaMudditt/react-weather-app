@@ -13,9 +13,8 @@ export default function Forecast(props) {
 
   function handleResponse(response) {
     setForecastData({
-      city: response.data.city,
-      minTemp: response.data.daily.temperature.minimum,
-      maxTemp: response.data.daily.temperature.maximum,
+      minTemp: response.data.daily[1].temperature.minimum,
+      maxTemp: response.data.daily[1].temperature.maximum,
     });
     setReady(true);
   }
@@ -26,12 +25,13 @@ export default function Forecast(props) {
     axios.get(apiUrl).then(handleResponse);
   }
 
-  if (ready) {
+  if (!ready) {
+    return "Loading forecast ...";
   }
   return (
     <div className="Forecast">
       <div className="forecast-day">
-        <h4>Thursday</h4>
+        <h4>Tomorrow</h4>
         <WeatherIcon summary={"clear sky"} size={50} />
         <div>min: {forecastData.minTemp}°C</div>
         <div>max: {forecastData.maxTemp}°C</div>
