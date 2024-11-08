@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import WeatherIcon from "./WeatherIcon";
 import Temperature from "./Temperature";
+import Forecast from "./Forecast";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -37,35 +38,38 @@ export default function Weather(props) {
 
   if (ready) {
     return (
-      <div className="Weather">
-        <form onSubmit={handleSubmit}>
-          <input
-            className="enter-city"
-            type="search"
-            placeholder="Enter a city"
-            onChange={handleCityChange}
-          />
-          <input className="search-button" type="submit" value="Search" />
-        </form>
-        <h3>Showing the weather conditions for:</h3>
-        <h2>{weatherData.city}</h2>
-        <div className="current-weather-container">
-          <div>
-            <ul>
-              <li>Summary: {weatherData.summary}</li>
-              <li>Humidity: {weatherData.humidity}%</li>
-              <li>Wind speed: {Math.round(weatherData.wind)} km/h</li>
-            </ul>
-          </div>
-          <div className="current-weather-icon">
-            <WeatherIcon
-              summary={weatherData.summary}
-              alt={weatherData.summary}
-              size={80}
+      <div>
+        <div className="Weather">
+          <form onSubmit={handleSubmit}>
+            <input
+              className="enter-city"
+              type="search"
+              placeholder="Enter a city"
+              onChange={handleCityChange}
             />
+            <input className="search-button" type="submit" value="Search" />
+          </form>
+          <h3>Showing the weather conditions for:</h3>
+          <h2>{weatherData.city}</h2>
+          <div className="current-weather-container">
+            <div>
+              <ul>
+                <li>Summary: {weatherData.summary}</li>
+                <li>Humidity: {weatherData.humidity}%</li>
+                <li>Wind speed: {Math.round(weatherData.wind)} km/h</li>
+              </ul>
+            </div>
+            <div className="current-weather-icon">
+              <WeatherIcon
+                summary={weatherData.summary}
+                alt={weatherData.summary}
+                size={80}
+              />
+            </div>
+            <Temperature celsius={weatherData.temperature} />
           </div>
-          <Temperature celsius={weatherData.temperature} />
         </div>
+        <Forecast city={weatherData.city} />
       </div>
     );
   } else {
