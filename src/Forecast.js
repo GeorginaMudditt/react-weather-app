@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import WeatherIcon from "./WeatherIcon";
 import "./Forecast.css";
 import axios from "axios";
+import moment from "moment";
 
 export default function Forecast(props) {
   const [ready, setReady] = useState(false);
@@ -16,6 +17,7 @@ export default function Forecast(props) {
 
     function handleResponse(response) {
       setForecastData({
+        date: moment().add(1, "d").format("dddd"),
         minTemp: response.data.daily[0].temperature.minimum,
         maxTemp: response.data.daily[0].temperature.maximum,
         forecastSummary: response.data.daily[0].condition.description,
@@ -32,7 +34,7 @@ export default function Forecast(props) {
   return (
     <div className="Forecast">
       <div className="forecast-day">
-        <h4>Tomorrow</h4>
+        <h4>{forecastData.date}</h4>
         <WeatherIcon summary={forecastData.forecastSummary} size={50} />
         <div>min: {Math.round(forecastData.minTemp)}°C</div>
         <div>max: {Math.round(forecastData.maxTemp)}°C</div>
