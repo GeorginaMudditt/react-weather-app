@@ -18,6 +18,7 @@ export default function Forecast(props) {
       setForecastData({
         minTemp: response.data.daily[0].temperature.minimum,
         maxTemp: response.data.daily[0].temperature.maximum,
+        forecastSummary: response.data.daily[0].condition.description,
       });
       setReady(true);
     }
@@ -32,7 +33,7 @@ export default function Forecast(props) {
     <div className="Forecast">
       <div className="forecast-day">
         <h4>Tomorrow</h4>
-        <WeatherIcon summary={"clear sky"} size={50} />
+        <WeatherIcon summary={forecastData.forecastSummary} size={50} />
         <div>min: {Math.round(forecastData.minTemp)}°C</div>
         <div>max: {Math.round(forecastData.maxTemp)}°C</div>
       </div>
