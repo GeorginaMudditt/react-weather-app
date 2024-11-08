@@ -16,13 +16,21 @@ export default function Forecast(props) {
     }
 
     function handleResponse(response) {
-      setForecastData({
-        date: moment().add(1, "d").format("dddd"),
-        minTemp: response.data.daily[0].temperature.minimum,
-        maxTemp: response.data.daily[0].temperature.maximum,
-        forecastSummary: response.data.daily[0].condition.description,
-      });
-      setReady(true);
+      if (response.data.daily && response.data.daily.length > 4) {
+        setForecastData(
+          response.data.daily.slice(1, 6).map((day, index) => ({
+            date: moment()
+              .add(index + 1, "d")
+              .format("dddd"),
+            minTemp: day.temperature.minimum,
+            maxTemp: day.temperature.maximum,
+            forecastSummary: day.condition.description,
+          }))
+        );
+        setReady(true);
+      } else {
+        console.error("Unexpected API response structure:", response.data);
+      }
     }
 
     search();
@@ -33,12 +41,14 @@ export default function Forecast(props) {
   }
   return (
     <div className="Forecast">
-      <div className="forecast-day">
-        <h4>{forecastData.date}</h4>
-        <WeatherIcon summary={forecastData.forecastSummary} size={50} />
-        <div>min: {Math.round(forecastData.minTemp)}°C</div>
-        <div>max: {Math.round(forecastData.maxTemp)}°C</div>
-      </div>
+      {forecastData.map((day, index) => (
+        <div className="forecast-day" key={index}>
+          <h4>{day.date}</h4>
+          <WeatherIcon summary={day.forecastSummary} size={50} />
+          <div>min: {Math.round(day.minTemp)}°C</div>
+          <div>max: {Math.round(day.maxTemp)}°C</div>
+        </div>
+      ))}
     </div>
   );
 }
