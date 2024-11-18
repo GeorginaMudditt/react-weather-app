@@ -11,6 +11,8 @@ export default function WeatherIcon(props) {
     "broken clouds": "CLOUDY",
     "shower rain": "RAIN",
     "light rain": "RAIN",
+    "moderate rain": "RAIN",
+    "light snow": "SNOW",
     rain: "RAIN",
     thunderstorm: "SLEET",
     snow: "SNOW",
